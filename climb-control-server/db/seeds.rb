@@ -27,18 +27,33 @@ Problem.create(difficulty: 8, date_set:Date.parse('2022-12-13'), date_to_remove:
 Problem.create(difficulty: 4, date_set:Date.parse('2022-12-16'), date_to_remove: Date.parse('2023-01-16'), climb_type: climb_types[2], setter_id: Setter.third.id)
 Problem.create(difficulty: 5, date_set:Date.parse('2022-12-02'), date_to_remove: Date.parse('2023-01-02'), climb_type: climb_types[3], setter_id: Setter.fourth.id)
 Problem.create(difficulty: 3, date_set:Date.parse('2022-12-16'), date_to_remove: Date.parse('2023-03-01'), climb_type: climb_types[4], setter_id: Setter.first.id)
-Problem.create(difficulty: 2, date_set:Date.parse('2022-11-25'), date_to_remove: Date.parse('2023-01-05'), climb_type: climb_types[0], setter_id: Setter.first.id)
-problems = Problem.all # 11 total
+problems = Problem.all # 10 total
 
 
 Climb.create(climber_id: climbers[0].id, problem_id: problems[0].id)
-
-
-
-
-
-
-
+Climb.create(climber_id: climbers[0].id, problem_id: problems[1].id)
+Climb.create(climber_id: climbers[2].id, problem_id: problems[2].id)
+Climb.create(climber_id: climbers[2].id, problem_id: problems[3].id)
+Climb.create(climber_id: climbers[1].id, problem_id: problems[4].id)
+Climb.create(climber_id: climbers[1].id, problem_id: problems[5].id)
+Climb.create(climber_id: climbers[3].id, problem_id: problems[6].id)
+Climb.create(climber_id: climbers[3].id, problem_id: problems[7].id)
+Climb.create(climber_id: climbers[4].id, problem_id: problems[8].id)
+Climb.create(climber_id: climbers[4].id, problem_id: problems[9].id)
+Climb.create(climber_id: climbers[6].id, problem_id: problems[0].id)
+Climb.create(climber_id: climbers[6].id, problem_id: problems[1].id)
+Climb.create(climber_id: climbers[7].id, problem_id: problems[0].id)
+Climb.create(climber_id: climbers[1].id, problem_id: problems[1].id)
+Climb.create(climber_id: climbers[4].id, problem_id: problems[4].id)
+Climb.create(climber_id: climbers[2].id, problem_id: problems[3].id)
+Climb.create(climber_id: climbers[0].id, problem_id: problems[0].id)
+Climb.create(climber_id: climbers[2].id, problem_id: problems[3].id)
+Climb.create(climber_id: climbers[3].id, problem_id: problems[3].id)
+Climb.create(climber_id: climbers[4].id, problem_id: problems[3].id)
+Climb.create(climber_id: climbers[1].id, problem_id: problems[7].id)
+Climb.create(climber_id: climbers[2].id, problem_id: problems[7].id)
+Climb.create(climber_id: climbers[3].id, problem_id: problems[3].id)
+Climb.create(climber_id: climbers[4].id, problem_id: problems[5].id)
 
 
 puts "✅ Done seeding!"
