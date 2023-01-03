@@ -27,8 +27,10 @@ class ApplicationController < Sinatra::Base
 
     # problems FULL CRUD
     get '/problems' do 
-      problems = Problem.all
-      problems.to_json
+      # only problems that have not been removed
+      all_problems = Problem.all
+      current_problems = all_problems.select { |x| x.days_remaining > 0 }
+      current_problems.to_json
     end
 
     post '/problems' do
@@ -40,6 +42,10 @@ class ApplicationController < Sinatra::Base
         setter_id: params[:setter_id]
       )
       new_problem.to_json
+    end
+
+    patch '/problems/:id' do
+      # editable fields: difficulty, date_to_remove
     end
 
     # climbs GET AND POST (done)
