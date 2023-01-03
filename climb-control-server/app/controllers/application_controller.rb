@@ -1,13 +1,19 @@
 class ApplicationController < Sinatra::Base
     set :default_content_type, 'application/json'
     
-    # setters
+    # setters GET ONLY
+    
+    get '/setters/:id' do 
+      setter = Setter.find(params[:id])
+      setter.to_json(include: :problems)
+    end
+    
     get '/setters' do 
       setters = Setter.all.order(name: :asc)
       setters.to_json
     end
 
-    # climbers
+    # climbers GET ONLY
 
     get '/climbers/:id' do 
       climber = Climber.find(params[:id])
@@ -19,18 +25,34 @@ class ApplicationController < Sinatra::Base
       climbers.to_json
     end
 
-    # problems
+    # problems FULL CRUD
     get '/problems' do 
       problems = Problem.all
       problems.to_json
     end
 
-    # climbs
+    post '/problems' do
+      new_problem = Problem.create(
+        difficulty: params[:difficulty],
+        date_set: params[:date_set],
+        date_to_remove: params[:date_to_remove],
+        climb_type: params[:climb_type],
+        setter_id: params[:setter_id]
+      )
+      new_problem.to_json
+    end
+
+    # climbs GET AND POST (done)
     get '/climbs' do 
       climbs = Climb.all
       climbs.to_json
     end
 
-
-    
+    post '/climbs' do 
+      new_climb = Climb.create(
+        climber_id: params[:climber_id],
+        problem_id: params[:problem_id]
+      )
+      new_climb.to_json
+    end
   end
