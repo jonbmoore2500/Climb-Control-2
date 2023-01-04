@@ -44,6 +44,11 @@ class ApplicationController < Sinatra::Base
 
     patch '/problems/:id' do
       # editable fields: difficulty, date_to_remove
+      edited_problem = Problem.update(
+        difficulty: params[:difficulty],
+        date_to_remove: params[:date_to_remove]
+      )
+      edited_problem.to_json
     end
 
     # climbs GET AND POST (done)
