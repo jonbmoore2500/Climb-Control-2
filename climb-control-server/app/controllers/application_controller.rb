@@ -2,7 +2,6 @@ class ApplicationController < Sinatra::Base
     set :default_content_type, 'application/json'
     
     # setters GET ONLY
-    
     get '/setters/:id' do 
       setter = Setter.find(params[:id])
       setter.to_json(include: :problems)
@@ -14,7 +13,6 @@ class ApplicationController < Sinatra::Base
     end
 
     # climbers GET ONLY
-
     get '/climbers/:id' do 
       climber = Climber.find(params[:id])
       climber.to_json(include: :climbs)
