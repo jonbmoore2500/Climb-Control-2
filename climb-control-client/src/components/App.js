@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-//import { Route, Switch } from "react-router-dom"
+import {Switch, Route} from "react-router-dom"
 
 import Header from "./Header"
 import Home from "./Home"
@@ -12,6 +12,15 @@ function App() {
         <Header />
         <Home />
         <Climbers />
+        {/* <Switch>
+            <Route exact path="/" >
+              <Home />
+            </Route>
+            <Route exact path="/climbers" >
+              <Climbers />
+            </Route>
+        </Switch> */}
+        
     </div>
   );
 }

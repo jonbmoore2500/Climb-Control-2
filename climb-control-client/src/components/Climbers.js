@@ -14,7 +14,7 @@ function Climbers() {
             <h3>Climbers!</h3>
             <ul>
                 {climbersArr.map((climber) => (
-                    <ClimberCard climber={climber}/>
+                    <ClimberCard climber={climber} key={climber.name}/>
                 ))}
             </ul>
         </div>
