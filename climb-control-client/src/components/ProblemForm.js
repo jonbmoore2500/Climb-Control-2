@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react"
 
-function ProblemForm() {
+function ProblemForm({handleSave}) {
     
     let today = new Date().toISOString().slice(0, 10)
     const [newDifficulty, setNewDifficulty] = useState("9999")
@@ -45,7 +45,7 @@ function ProblemForm() {
         }
         if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
             // test all fields for validity
-            // handleSave(newObj) 
+            handleSave(newObj) 
         } 
     }
 

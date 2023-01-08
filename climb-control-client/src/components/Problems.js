@@ -11,6 +11,23 @@ function Problems() {
         .then(data => setProblemsArr(data))
     }, [])
 
+    function handleSave(problemObj) {
+        fetch("http://localhost:9292/problems", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(problemObj)
+        })
+        .then(r => r.json())
+        .then(data => {
+            console.log(data, problemsArr)
+            // how to incorporate setter obj into updating state, I need that to render ProblemCard
+            // newProblemsArr = [problemsArr, ...data]
+            // setProblemsArr([...problemsArr, data])
+        })
+    }
+
     //console.log("problemsArr", problemsArr)
 
     return (
@@ -21,7 +38,7 @@ function Problems() {
                 <ProblemCard problemObj={problem} key={problem.id} />
                 ))}
             </div>
-            <ProblemForm />
+            <ProblemForm handleSave={handleSave}/>
         </div>
 
     )
