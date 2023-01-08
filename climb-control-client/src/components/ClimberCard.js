@@ -1,15 +1,27 @@
 import React, {useState} from 'react'
+import ClimbForm from "./ClimbForm"
 import "../modal.css"
 
 function ClimberCard({climber}) {
-// include modal for additional info pop-up. 
+
+// create toggle for form to add climb. use Context for available problems
     const [modal, setModal] = useState(false)
+    const [showForm, setShowForm] = useState(false)
 
     function toggleModal() {
-        console.log(climber.gym_member)
+        //console.log(climber.gym_member)
         setModal(!modal)
     }
-    //console.log(modal)
+    function toggleForm() {
+        setShowForm(!showForm)
+    }
+
+    function handleOnSubmit(e) {
+        console.log(e)
+    }
+    function handleOnCancel(e) {
+        setShowForm(!showForm)
+    }
 
     return (
         <div>
@@ -27,6 +39,14 @@ function ClimberCard({climber}) {
                             <h4>Member of the gym!</h4> : 
                             <h4>Not a member of the gym ☹</h4>}
                         {/* <h4>Name: {climber.name}</h4> will include info about hardest climb or average climb or something */}
+                        {showForm ? 
+                        <div>
+                            <ClimbForm />
+                            <button onClick={handleOnSubmit}>Submit?</button>
+                            <button onClick={handleOnCancel}>Cancel?</button>
+                        </div>
+                        : <button onClick={toggleForm}>Add a climb?</button>
+                        }
                         <button onClick={toggleModal}>Close</button>
                     </div>    
                 </div>

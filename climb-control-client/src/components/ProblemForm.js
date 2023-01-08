@@ -10,25 +10,18 @@ function ProblemForm({handleSave}) {
     const dateInputRef = useRef(null)
     
     // replace with Context setters from initial GET requests
-    const tempSetters = [
-                        {id: 6, name: "Samantha", guest_setter: false}, 
-                        {id: 5, name: "Seth", guest_setter: false}, 
-                        {id: 7, name: "Sinbad", guest_setter: false}, 
-                        {id: 8, name: "Stephanie", guest_setter: true}
-                        ]
+    const tempSetters = [{id: 6, name: "Samantha", guest_setter: false}, {id: 5, name: "Seth", guest_setter: false}, 
+                        {id: 7, name: "Sinbad", guest_setter: false}, {id: 8, name: "Stephanie", guest_setter: true}]
     
     function handleOnDiffChange(e) {
         setNewDifficulty(e.target.value)
     }
-    
     function handleOnTypeChange(e) {
         setNewClimbType(e.target.value)
     }
-
     function handleOnSetterChange(e) {
         setNewSetterId(e.target.value)
     }
-
     function handleOnDateChange(e) {
         console.log(newDateRemove, e.target.value)
         setNewDateRemove(e.target.value)

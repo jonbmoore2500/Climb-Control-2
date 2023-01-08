@@ -12,8 +12,8 @@ function App() {
     <div className="App">
         <Header />
         <Home />
-        {/* <Climbers /> */}
-        <Problems />
+        <Climbers />
+        {/* <Problems /> */}
         {/* <Switch>
             <Route exact path="/" >
               <Home />

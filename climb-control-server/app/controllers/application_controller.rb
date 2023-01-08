@@ -15,12 +15,12 @@ class ApplicationController < Sinatra::Base
     # climbers GET ONLY
     get '/climbers/:id' do 
       climber = Climber.find(params[:id])
-      climber.to_json(include: :climbs)
+      climber.to_json
     end
 
     get '/climbers' do 
       climbers = Climber.all
-      climbers.to_json
+      climbers.to_json(include: :climbs)
     end
 
     # problems FULL CRUD
@@ -54,6 +54,7 @@ class ApplicationController < Sinatra::Base
     end
 
     # climbs GET AND POST (done)
+    # is GET needed? tbd
     get '/climbs' do 
       climbs = Climb.all
       climbs.to_json
