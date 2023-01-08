@@ -1,11 +1,14 @@
-import React, {useState} from "react"
+import React, {useState, useRef} from "react"
 
 function ProblemForm() {
-    const [newDifficulty, setNewDifficulty] = useState("")
-    const [newSetterId, setNewSetterId] = useState(0)
-    const [newDateSet, setNewDateSet] = useState("2023-01-01")
-    const [newDateRemove, setNewDateRemove] = useState("2023-01-02")
+    // let today = new Date().toISOString().slice(0, 10)
+    const [newDifficulty, setNewDifficulty] = useState("9999")
+    const [newSetterId, setNewSetterId] = useState("placeholder")
+    //const [newDateSet, setNewDateSet] = useState("2023-01-01") just use new Date in POST request
+    const [newDateRemove, setNewDateRemove] = useState("2023-01-01")
     const [newClimbType, setNewClimbType] = useState("")
+
+    const dateInputRef = useRef(null)
 
     // replace with Context setters from initial GET requests
     const tempSetters = [
@@ -15,9 +18,9 @@ function ProblemForm() {
                         {id: 8, name: "Stephanie"}
                         ]
     
-
     function handleOnDiffChange(e) {
         // probably better way to do this, but check value length for less than 3 characters
+        // handle at submit phase
         setNewDifficulty(e.target.value)
     }
     
@@ -30,6 +33,10 @@ function ProblemForm() {
         setNewSetterId(e.target.value)
     }
 
+    function handleOnDateChange(e) {
+        console.log(newDateRemove, e.target.value)
+        setNewDateRemove(e.target.value)
+    }
 
     return (
 
@@ -39,7 +46,7 @@ function ProblemForm() {
                 <h5>Enter a new problem</h5>
                 {/* multiple dropdowns - type, setter. date set will be today, 
                 date to be removed will have m/d/y fields. type will be text field */}
-                <select onChange={handleOnDiffChange}>
+                <select onChange={handleOnDiffChange} defaultValue={newDifficulty}>
                     <option value="9999">Select a Difficulty</option>
                     <option value="0">V0</option>
                     <option value="1">V1</option>
@@ -58,11 +65,12 @@ function ProblemForm() {
                 </select>
                 <input className="newType" onChange={handleOnTypeChange} value={newClimbType} placeholder={"Enter a climb type"} />
                 <select onChange={handleOnSetterChange} >
-                    <option value={"placeholder"}>Select a Setter</option>
+                    <option value={newSetterId}>Select a Setter</option>
                     {tempSetters.map((setter) => (
                         <option value={setter.id} key={setter.id}>{setter.name}</option>
                     ))}
                 </select>
+                <input type="date" onChange={handleOnDateChange} ref={dateInputRef} value={newDateRemove}/>
             </label>
         
         </div>

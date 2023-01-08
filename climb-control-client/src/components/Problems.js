@@ -21,7 +21,6 @@ function Problems() {
                 <ProblemCard problemObj={problem} key={problem.id} />
                 ))}
             </div>
-            <h3> testing</h3>
             <ProblemForm />
         </div>
 
