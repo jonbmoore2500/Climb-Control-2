@@ -11,10 +11,10 @@ function ProblemForm({handleSave}) {
     
     // replace with Context setters from initial GET requests
     const tempSetters = [
-                        {id: 6, name: "Samantha"}, 
-                        {id: 5, name: "Seth"}, 
-                        {id: 7, name: "Sinbad"}, 
-                        {id: 8, name: "Stephanie"}
+                        {id: 6, name: "Samantha", guest_setter: false}, 
+                        {id: 5, name: "Seth", guest_setter: false}, 
+                        {id: 7, name: "Sinbad", guest_setter: false}, 
+                        {id: 8, name: "Stephanie", guest_setter: true}
                         ]
     
     function handleOnDiffChange(e) {
@@ -45,7 +45,8 @@ function ProblemForm({handleSave}) {
         }
         if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
             // test all fields for validity
-            handleSave(newObj) 
+            let newSetterObj = tempSetters.find((setter) => setter.id == parseInt(newSetterId))
+            handleSave(newObj, newSetterObj) 
         } 
     }
 
