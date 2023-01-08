@@ -23,7 +23,9 @@ function ClimberCard({climber}) {
                     <div className="modal-content">
                         <h4>Name: {climber.name}</h4>
                         <h4>Age: {climber.age}</h4>
-                        {climber.gym_member ? <h4>Member of the gym!</h4> : <h4>Not a member of the gym ☹</h4>}
+                        {climber.gym_member ? 
+                            <h4>Member of the gym!</h4> : 
+                            <h4>Not a member of the gym ☹</h4>}
                         {/* <h4>Name: {climber.name}</h4> will include info about hardest climb or average climb or something */}
                         <button onClick={toggleModal}>Close</button>
                     </div>    

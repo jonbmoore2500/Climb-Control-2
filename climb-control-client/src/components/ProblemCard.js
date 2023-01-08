@@ -1,10 +1,10 @@
 import React from "react"
 
-function ProblemCard({problem}) {
-    
+function ProblemCard({problemObj}) {
+    console.log(problemObj)
     return (
         <div>
-        {problem.difficulty}
+            This problem is a V{problemObj.difficulty}
         </div>
     )
 }
