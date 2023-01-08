@@ -26,10 +26,10 @@ class ApplicationController < Sinatra::Base
     # problems FULL CRUD
     get '/problems' do 
       all_problems = Problem.all
-      all_problems.to_json
+      all_problems.to_json(include: :setter)
       # only problems that have not been removed
       #current_problems = all_problems.select { |x| x.days_remaining > 0 }
-      #current_problems.to_json
+      #current_problems.to_json(include: :setter)
 
     end
 
