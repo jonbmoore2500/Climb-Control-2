@@ -4,6 +4,7 @@ import {Switch, Route} from "react-router-dom"
 import Header from "./Header"
 import Home from "./Home"
 import Climbers from "./Climbers"
+import Problems from "./Problems"
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Header />
         <Home />
         <Climbers />
+        {/* <Problems /> */}
         {/* <Switch>
             <Route exact path="/" >
               <Home />
