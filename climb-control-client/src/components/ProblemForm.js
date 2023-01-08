@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react"
 
 function ProblemForm() {
-    // let today = new Date().toISOString().slice(0, 10)
+    let today = new Date().toISOString().slice(0, 10)
     const [newDifficulty, setNewDifficulty] = useState("9999")
     const [newSetterId, setNewSetterId] = useState("placeholder")
     //const [newDateSet, setNewDateSet] = useState("2023-01-01") just use new Date in POST request
@@ -9,7 +9,6 @@ function ProblemForm() {
     const [newClimbType, setNewClimbType] = useState("")
 
     const dateInputRef = useRef(null)
-
     // replace with Context setters from initial GET requests
     const tempSetters = [
                         {id: 6, name: "Samantha"}, 
@@ -36,6 +35,21 @@ function ProblemForm() {
     function handleOnDateChange(e) {
         console.log(newDateRemove, e.target.value)
         setNewDateRemove(e.target.value)
+    }
+
+    function handleOnSaveClick(e) {
+        e.preventDefault()
+        let newObj = {
+            difficulty: parseInt(newDifficulty),
+            date_set: today,
+            date_to_remove: newDateRemove,
+            climb_type: newClimbType,
+            setter_id: parseInt(newSetterId)
+        }
+        if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
+            // test all fields
+            handleSave(newObj) 
+        } 
     }
 
     return (
@@ -71,6 +85,7 @@ function ProblemForm() {
                     ))}
                 </select>
                 <input type="date" onChange={handleOnDateChange} ref={dateInputRef} value={newDateRemove}/>
+                <button onClick={handleOnSaveClick}>Save this problem?</button>
             </label>
         
         </div>
