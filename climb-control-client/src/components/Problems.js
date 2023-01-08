@@ -16,13 +16,11 @@ function Problems() {
     return (
         <div>
             <h3> this is my problems component, it will list all the problems and include a form to add new ones or change certain details for existing ones</h3>
-            {/* <div>
-                {problemsArr.map((problem) => {
+            <div>
+                {problemsArr.map((problem) => (
                 <ProblemCard problemObj={problem} key={problem.id} />
-                // why won't this render?
-                console.log(problem.id, "testing", problem.climb_type)
-                })}
-            </div> */}
+                ))}
+            </div>
             <h3> testing</h3>
             <ProblemForm />
         </div>

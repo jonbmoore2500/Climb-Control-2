@@ -1,18 +1,32 @@
 import React, {useState} from "react"
 
 function ProblemForm() {
-    // const [newProblem, setNewProblem] = useState({
-    //     "difficulty": 0, "date_set": "2023-01-01", "date_to_remove": "2023-01-02", "climb_type": "crimpy", "setter_id": 1
-    // })
-    const [newDifficulty, setNewDifficulty] = useState("0")
+    const [newDifficulty, setNewDifficulty] = useState("")
     const [newSetterId, setNewSetterId] = useState(0)
+    const [newDateSet, setNewDateSet] = useState("2023-01-01")
+    const [newDateRemove, setNewDateRemove] = useState("2023-01-02")
+    const [newClimbType, setNewClimbType] = useState("")
 
+    // replace with Context setters from initial GET requests
+    const tempSetters = [
+                        {id: 6, name: "Samantha"}, 
+                        {id: 5, name: "Seth"}, 
+                        {id: 7, name: "Sinbad"}, 
+                        {id: 8, name: "Stephanie"}
+                        ]
+    
 
     function handleOnDiffChange(e) {
+        // probably better way to do this, but check value length for less than 3 characters
         setNewDifficulty(e.target.value)
     }
     
+    function handleOnTypeChange(e) {
+        setNewClimbType(e.target.value)
+    }
+
     function handleOnSetterChange(e) {
+        // make sure final setter_id is not "placeholder"
         setNewSetterId(e.target.value)
     }
 
@@ -23,10 +37,10 @@ function ProblemForm() {
             <h5>this is my problem form!</h5>
             <label>
                 <h5>Enter a new problem</h5>
-                {/* multiple dropdowns - difficulty, type, setter. date set will be today, 
-                date to be removed will have m/d/y fields */}
+                {/* multiple dropdowns - type, setter. date set will be today, 
+                date to be removed will have m/d/y fields. type will be text field */}
                 <select onChange={handleOnDiffChange}>
-                    <option id="placeholder">Select a Difficulty</option>
+                    <option value="9999">Select a Difficulty</option>
                     <option value="0">V0</option>
                     <option value="1">V1</option>
                     <option value="2">V2</option>
@@ -42,11 +56,13 @@ function ProblemForm() {
                     <option value="12">V12</option>
                     <option value="13">V13</option>
                 </select>
-                <select onChange={handleOnSetterChange}>
-                    {/* options - display is name, value is id  */}
-
+                <input className="newType" onChange={handleOnTypeChange} value={newClimbType} placeholder={"Enter a climb type"} />
+                <select onChange={handleOnSetterChange} >
+                    <option value={"placeholder"}>Select a Setter</option>
+                    {tempSetters.map((setter) => (
+                        <option value={setter.id} key={setter.id}>{setter.name}</option>
+                    ))}
                 </select>
-                
             </label>
         
         </div>
