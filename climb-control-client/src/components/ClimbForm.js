@@ -1,9 +1,18 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 
-function ClimbForm() {
+function ClimbForm({climber}) {
+
 
     return (
-        <div>this is my climb form</div>
+        <div>
+            <h4>this is my climb form</h4>
+            <label>
+                <h5>What problem did {climber.name} climb?</h5>
+                {/* <select>
+
+                </select> */}
+            </label>
+        </div>
     )
 
 }

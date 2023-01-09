@@ -7,21 +7,22 @@ import Climbers from "./Climbers"
 import Problems from "./Problems"
 
 
+
 function App() {
   return (
     <div className="App">
         <Header />
-        <Home />
-        <Climbers />
-        {/* <Problems /> */}
-        {/* <Switch>
-            <Route exact path="/" >
-              <Home />
-            </Route>
-            <Route exact path="/climbers" >
-              <Climbers />
-            </Route>
-        </Switch> */}
+        <Switch>
+          <Route exact path="/" >
+            <Home />
+          </Route>
+          <Route exact path="/climbers" >
+            <Climbers />
+          </Route>
+          <Route exact path="/problems" >
+            <Problems />
+          </Route>
+        </Switch>
         
     </div>
   );

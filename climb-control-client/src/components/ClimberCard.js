@@ -41,7 +41,7 @@ function ClimberCard({climber}) {
                         {/* <h4>Name: {climber.name}</h4> will include info about hardest climb or average climb or something */}
                         {showForm ? 
                         <div>
-                            <ClimbForm />
+                            <ClimbForm climber={climber}/>
                             <button onClick={handleOnSubmit}>Submit?</button>
                             <button onClick={handleOnCancel}>Cancel?</button>
                         </div>
