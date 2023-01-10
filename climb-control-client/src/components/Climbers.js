@@ -1,13 +1,8 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 import ClimberCard from "./ClimberCard"
 
-function Climbers() {
-    const [climbersArr, setClimbersArr] = useState([])
-    useEffect(() => {
-        fetch("http://localhost:9292/climbers")
-        .then(resp => resp.json())
-        .then(data => setClimbersArr(data))
-    }, [])
+function Climbers({climbersArr}) {
+    
 
     return (
         <div>

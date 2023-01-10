@@ -1,31 +1,10 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import ProblemCard from "./ProblemCard"
 import ProblemForm from "./ProblemForm"
+import {ProblemContext} from "../contexts/ProblemContext.js"
 
-function Problems() {
-    const [problemsArr, setProblemsArr] = useState([])
-    
-    useEffect(() => {
-        fetch("http://localhost:9292/problems")
-        .then(resp => resp.json())
-        .then(data => setProblemsArr(data))
-    }, [])
-
-    function handleSave(problemObj, setterObj) {
-        fetch("http://localhost:9292/problems", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(problemObj)
-        })
-        .then(r => r.json())
-        .then(data => {
-            console.log(data, problemsArr)
-            data.setter = setterObj
-            setProblemsArr([...problemsArr, data])
-        })
-    }
+function Problems({handleSave}) {
+    const {problemsArr} = useContext(ProblemContext)
 
     //console.log("problemsArr", problemsArr)
 
