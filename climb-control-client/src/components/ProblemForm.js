@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react"
 
-function ProblemForm({handleSave}) {
+function ProblemForm({handleSave, settersArr}) {
     
     let today = new Date().toISOString().slice(0, 10)
     const [newDifficulty, setNewDifficulty] = useState("9999")
@@ -8,10 +8,6 @@ function ProblemForm({handleSave}) {
     const [newDateRemove, setNewDateRemove] = useState("2023-01-01")
     const [newClimbType, setNewClimbType] = useState("")
     const dateInputRef = useRef(null)
-    
-    // replace with Context setters from initial GET requests
-    const tempSetters = [{id: 6, name: "Samantha", guest_setter: false}, {id: 5, name: "Seth", guest_setter: false}, 
-                        {id: 7, name: "Sinbad", guest_setter: false}, {id: 8, name: "Stephanie", guest_setter: true}]
     
     function handleOnDiffChange(e) {
         setNewDifficulty(e.target.value)
@@ -38,7 +34,7 @@ function ProblemForm({handleSave}) {
         }
         if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
             // test all fields for validity
-            let newSetterObj = tempSetters.find((setter) => setter.id == parseInt(newSetterId))
+            let newSetterObj = settersArr.find((setter) => setter.id == parseInt(newSetterId))
             handleSave(newObj, newSetterObj) 
         } 
     }
@@ -68,7 +64,7 @@ function ProblemForm({handleSave}) {
                 <input className="newType" onChange={handleOnTypeChange} value={newClimbType} placeholder={"Enter a climb type"} />
                 <select onChange={handleOnSetterChange} >
                     <option value={newSetterId}>Select a Setter</option>
-                    {tempSetters.map((setter) => (
+                    {settersArr.map((setter) => (
                         <option value={setter.id} key={setter.id}>{setter.name}</option>
                     ))}
                 </select>

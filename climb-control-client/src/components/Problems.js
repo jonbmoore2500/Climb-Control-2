@@ -5,8 +5,12 @@ import {ProblemContext} from "../contexts/ProblemContext.js"
 
 function Problems({handleSave}) {
     const {problemsArr} = useContext(ProblemContext)
-
-    //console.log("problemsArr", problemsArr)
+    const [settersArr, setSettersArr] = useState([])
+    useEffect(() => {
+        fetch("http://localhost:9292/setters")
+        .then(resp => resp.json())
+        .then(data => setSettersArr(data))
+    }, [])
 
     return (
         <div>
@@ -16,7 +20,7 @@ function Problems({handleSave}) {
                 <ProblemCard problemObj={problem} key={problem.id} />
                 ))}
             </div>
-            <ProblemForm handleSave={handleSave}/>
+            <ProblemForm handleSave={handleSave} settersArr={settersArr}/>
         </div>
 
     )
