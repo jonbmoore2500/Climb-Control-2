@@ -13,10 +13,10 @@ class ApplicationController < Sinatra::Base
     end
 
     # climbers GET ONLY
-    get '/climbers/:id' do 
-      climber = Climber.find(params[:id])
-      climber.to_json
-    end
+    # get '/climbers/:id' do 
+    #   climber = Climber.find(params[:id])
+    #   climber.to_json
+    # end
 
     get '/climbers' do 
       climbers = Climber.all
@@ -53,12 +53,18 @@ class ApplicationController < Sinatra::Base
       edited_problem.to_json
     end
 
+    delete '/problems/:id' do 
+      delete_program = Program.find(params[:id])
+      delete_program.destroy
+      delete_program.to_json
+    end
+
     # climbs GET AND POST (done)
     # is GET needed? tbd
-    get '/climbs' do 
-      climbs = Climb.all
-      climbs.to_json
-    end
+    # get '/climbs' do 
+    #   climbs = Climb.all
+    #   climbs.to_json
+    # end
 
     post '/climbs' do 
       new_climb = Climb.create(
