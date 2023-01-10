@@ -64,7 +64,7 @@ function App() {
     function handleUpdateProblems(problemObj) {
       const newProblemsArr = problemsArr.map((problem) => {
         if (problem.id == problemObj.id) {
-          return problemObj
+          problem = problemObj
         }
         return problem
       })
