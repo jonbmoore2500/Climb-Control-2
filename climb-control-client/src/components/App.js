@@ -39,7 +39,7 @@ function App() {
             setProblemsArr([...problemsArr, data])
         })
     }
-    
+
     function saveClimb(climbObj) {
       fetch("http://localhost:9292/climbs", {
         method: "POST",
@@ -61,6 +61,16 @@ function App() {
       })
     }
 
+    function handleUpdateProblems(problemObj) {
+      const newProblemsArr = problemsArr.map((problem) => {
+        if (problem.id == problemObj.id) {
+          return problemObj
+        }
+        return problem
+      })
+      console.log(problemsArr, newProblemsArr)
+      setProblemsArr(newProblemsArr)
+    }
 
   return (
     <div className="App">
@@ -74,7 +84,7 @@ function App() {
             <Climbers climbersArr={climbersArr} saveClimb={saveClimb}/>
           </Route>
           <Route exact path="/problems" >
-            <Problems handleSaveProblem={handleSaveProblem}/>
+            <Problems handleSaveProblem={handleSaveProblem} handleUpdateProblems={handleUpdateProblems}/>
           </Route>
         </ProblemContext.Provider>
         </Switch>

@@ -5,7 +5,7 @@ function ProblemForm({handleSave, settersArr}) {
     let today = new Date().toISOString().slice(0, 10)
     const [newDifficulty, setNewDifficulty] = useState("9999")
     const [newSetterId, setNewSetterId] = useState("placeholder")
-    const [newDateRemove, setNewDateRemove] = useState("2023-01-01")
+    const [newDateRemove, setNewDateRemove] = useState(today)
     const [newClimbType, setNewClimbType] = useState("")
     const dateInputRef = useRef(null)
     
@@ -19,7 +19,6 @@ function ProblemForm({handleSave, settersArr}) {
         setNewSetterId(e.target.value)
     }
     function handleOnDateChange(e) {
-        console.log(newDateRemove, e.target.value)
         setNewDateRemove(e.target.value)
     }
 

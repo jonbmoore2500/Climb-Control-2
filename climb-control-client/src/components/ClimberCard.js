@@ -26,8 +26,8 @@ function ClimberCard({climber, handleSaveClimb}) {
 
     return (
         <div>
-            <div>
-                <h3 onClick={toggleModal}>{climber.name}</h3>
+            <div  onClick={toggleModal}>
+                <h3>{climber.name}</h3>
             </div>
 
             {modal && (

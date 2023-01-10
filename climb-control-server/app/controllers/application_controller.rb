@@ -2,22 +2,12 @@ class ApplicationController < Sinatra::Base
     set :default_content_type, 'application/json'
     
     # setters GET ONLY
-    get '/setters/:id' do 
-      setter = Setter.find(params[:id])
-      setter.to_json(include: :problems)
-    end
-    
     get '/setters' do 
       setters = Setter.all.order(name: :asc)
       setters.to_json
     end
 
     # climbers GET ONLY
-    # get '/climbers/:id' do 
-    #   climber = Climber.find(params[:id])
-    #   climber.to_json
-    # end
-
     get '/climbers' do 
       climbers = Climber.all
       climbers.to_json(:include => :climbs)
@@ -27,10 +17,6 @@ class ApplicationController < Sinatra::Base
     get '/problems' do 
       all_problems = Problem.all
       all_problems.to_json(:methods => :days_remaining, :include => :setter)
-      # only problems that have not been removed
-      #current_problems = all_problems.select { |x| x.days_remaining > 0 }
-      #current_problems.to_json(include: :setter)
-
     end
 
     post '/problems' do
@@ -46,7 +32,8 @@ class ApplicationController < Sinatra::Base
 
     patch '/problems/:id' do
       # editable fields: difficulty, date_to_remove
-      edited_problem = Problem.update(
+      edited_problem = Problem.find(params[:id])
+      edited_problem.update(
         difficulty: params[:difficulty],
         date_to_remove: params[:date_to_remove]
       )
@@ -59,13 +46,7 @@ class ApplicationController < Sinatra::Base
       delete_program.to_json
     end
 
-    # climbs GET AND POST (done)
-    # is GET needed? tbd
-    # get '/climbs' do 
-    #   climbs = Climb.all
-    #   climbs.to_json
-    # end
-
+    # climbs POST only
     post '/climbs' do 
       new_climb = Climb.create(
         climber_id: params[:climber_id],
