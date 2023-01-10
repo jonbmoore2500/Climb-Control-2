@@ -7,8 +7,7 @@ function NavBar() {
         <div className="navBar">
             <NavLink to="/" exact className="nav">Home</NavLink>
             <NavLink to="/climbers" exact className="nav">Climbers</NavLink>
-            {/* <NavLink to="/Random" exact className="nav">Get a Recommendation</NavLink>
-            <NavLink to="/BuildTeams" exact className="nav">Build a Team</NavLink> */}
+            <NavLink to="/problems" exact className="nav">Problems</NavLink>
         </div>
     )
 }
