@@ -5,6 +5,9 @@ import {ProblemContext} from "../contexts/ProblemContext.js"
 
 function Problems({handleSaveProblem}) {
     const {problemsArr} = useContext(ProblemContext)
+    const remainingProblems = problemsArr.filter((problem) => problem.days_remaining > 0)
+    
+
     const [settersArr, setSettersArr] = useState([])
     useEffect(() => {
         fetch("http://localhost:9292/setters")
@@ -14,9 +17,12 @@ function Problems({handleSaveProblem}) {
 
     return (
         <div>
-            <h3> this is my problems component, it will list all the problems and include a form to add new ones or change certain details for existing ones</h3>
+            <h3>Problems!</h3>
+            <h4>Select a problem to edit its difficulty or removal date</h4>
+            {/* add a way to favorite (non-persistent) a given problem, then move 
+            favorites to front of the line in ClimbForm. long term project */}
             <div>
-                {problemsArr.map((problem) => (
+                {remainingProblems.map((problem) => (
                 <ProblemCard problemObj={problem} key={problem.id} />
                 ))}
             </div>

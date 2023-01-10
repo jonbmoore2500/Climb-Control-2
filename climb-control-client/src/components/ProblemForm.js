@@ -41,7 +41,6 @@ function ProblemForm({handleSave, settersArr}) {
 
     return (
         <div>
-            <h5>this is my problem form!</h5>
             <label>
                 <h5>Enter a new problem</h5>
                 <select onChange={handleOnDiffChange} defaultValue={newDifficulty}>

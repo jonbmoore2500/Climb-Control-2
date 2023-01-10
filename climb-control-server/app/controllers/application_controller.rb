@@ -20,13 +20,13 @@ class ApplicationController < Sinatra::Base
 
     get '/climbers' do 
       climbers = Climber.all
-      climbers.to_json(include: :climbs)
+      climbers.to_json(:include => :climbs)
     end
 
     # problems FULL CRUD
     get '/problems' do 
       all_problems = Problem.all
-      all_problems.to_json(include: :setter)
+      all_problems.to_json(:methods => :days_remaining, :include => :setter)
       # only problems that have not been removed
       #current_problems = all_problems.select { |x| x.days_remaining > 0 }
       #current_problems.to_json(include: :setter)

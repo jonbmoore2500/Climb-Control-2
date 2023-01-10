@@ -39,6 +39,7 @@ function App() {
             setProblemsArr([...problemsArr, data])
         })
     }
+    
     function saveClimb(climbObj) {
       fetch("http://localhost:9292/climbs", {
         method: "POST",
@@ -49,14 +50,15 @@ function App() {
       })
       .then(r => r.json())
       .then(data => {
-        console.log(data)
-        // newClimbers = climbersArr.map((climber) => {
-
-        // })
-        // setClimbersArr
+        let newClimbers = climbersArr.map((climber) => {
+          if (climber.id == climbObj.climber_id) {
+            climber = data.climber 
+            return climber 
+          }
+          return climber
+        })
+        setClimbersArr(newClimbers)
       })
-
-
     }
 
 
