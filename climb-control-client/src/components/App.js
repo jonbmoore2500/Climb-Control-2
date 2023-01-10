@@ -24,7 +24,7 @@ function App() {
         .then(resp => resp.json())
         .then(data => setProblemsArr(data))
     }, [])
-    function handleSave(problemObj, setterObj) {
+    function handleSaveProblem(problemObj, setterObj) {
         fetch("http://localhost:9292/problems", {
             method: "POST",
             headers: {
@@ -39,6 +39,25 @@ function App() {
             setProblemsArr([...problemsArr, data])
         })
     }
+    function saveClimb(climbObj) {
+      fetch("http://localhost:9292/climbs", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(climbObj)
+      })
+      .then(r => r.json())
+      .then(data => {
+        console.log(data)
+        // newClimbers = climbersArr.map((climber) => {
+
+        // })
+        // setClimbersArr
+      })
+
+
+    }
 
 
   return (
@@ -50,10 +69,10 @@ function App() {
           </Route>
         <ProblemContext.Provider value={{problemsArr}}>
           <Route exact path="/climbers" >
-            <Climbers climbersArr={climbersArr}/>
+            <Climbers climbersArr={climbersArr} saveClimb={saveClimb}/>
           </Route>
           <Route exact path="/problems" >
-            <Problems handleSave={handleSave}/>
+            <Problems handleSaveProblem={handleSaveProblem}/>
           </Route>
         </ProblemContext.Provider>
         </Switch>

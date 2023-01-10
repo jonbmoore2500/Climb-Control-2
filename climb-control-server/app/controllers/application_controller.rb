@@ -71,6 +71,6 @@ class ApplicationController < Sinatra::Base
         climber_id: params[:climber_id],
         problem_id: params[:problem_id]
       )
-      new_climb.to_json
+      new_climb.to_json(include: :climber)
     end
   end

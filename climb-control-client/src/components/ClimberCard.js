@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import ClimbForm from "./ClimbForm"
 import "../modal.css"
 
-function ClimberCard({climber}) {
+function ClimberCard({climber, handleSaveClimb}) {
 
 // create toggle for form to add climb. use Context for available problems
     const [modal, setModal] = useState(false)
@@ -16,10 +16,11 @@ function ClimberCard({climber}) {
         setShowForm(!showForm)
     }
 
-    function handleOnSubmit(e) {
-        console.log(e)
+    function handleSubmit(problemId) {
+        let newClimbObj = {climber_id: parseInt(climber.id), problem_id: parseInt(problemId)}
+        handleSaveClimb(newClimbObj)
     }
-    function handleOnCancel(e) {
+    function handleCancel(e) {
         setShowForm(!showForm)
     }
 
@@ -40,11 +41,7 @@ function ClimberCard({climber}) {
                             <h4>Not a member of the gym ☹</h4>}
                         {/* <h4>Name: {climber.name}</h4> will include info about hardest climb or average climb or something */}
                         {showForm ? 
-                        <div>
-                            <ClimbForm climber={climber}/>
-                            <button onClick={handleOnSubmit}>Submit?</button>
-                            <button onClick={handleOnCancel}>Cancel?</button>
-                        </div>
+                        <ClimbForm climber={climber} handleSubmit={handleSubmit} handleCancel={handleCancel}/>
                         : <button onClick={toggleForm}>Add a climb?</button>
                         }
                         <button onClick={toggleModal}>Close</button>

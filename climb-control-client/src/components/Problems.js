@@ -3,7 +3,7 @@ import ProblemCard from "./ProblemCard"
 import ProblemForm from "./ProblemForm"
 import {ProblemContext} from "../contexts/ProblemContext.js"
 
-function Problems({handleSave}) {
+function Problems({handleSaveProblem}) {
     const {problemsArr} = useContext(ProblemContext)
     const [settersArr, setSettersArr] = useState([])
     useEffect(() => {
@@ -20,7 +20,7 @@ function Problems({handleSave}) {
                 <ProblemCard problemObj={problem} key={problem.id} />
                 ))}
             </div>
-            <ProblemForm handleSave={handleSave} settersArr={settersArr}/>
+            <ProblemForm handleSave={handleSaveProblem} settersArr={settersArr}/>
         </div>
 
     )
