@@ -37,7 +37,7 @@ function App() {
             console.log(data, problemsArr)
             let newArr = [...problemsArr, data]
             console.log(newArr)
-            // why won't it rerender the updated array?
+            // why won't it rerender from the updated array?
             setProblemsArr(newArr)
         })
     }
