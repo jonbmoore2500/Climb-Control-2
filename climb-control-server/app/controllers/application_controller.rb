@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
     # climbers GET ONLY
     get '/climbers' do 
       climbers = Climber.all
-      climbers.to_json(:include => :climbs)
+      climbers.to_json(:methods => [:hardest_climb, :average_difficulty, :favorite_setter], :include => :climbs)
     end
 
     # problems FULL CRUD
