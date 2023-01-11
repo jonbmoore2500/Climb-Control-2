@@ -32,9 +32,7 @@ function ProblemForm({handleSave, settersArr}) {
             setter_id: parseInt(newSetterId)
         }
         if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
-            // test all fields for validity
-            let newSetterObj = settersArr.find((setter) => setter.id == parseInt(newSetterId))
-            handleSave(newObj, newSetterObj) 
+            handleSave(newObj) 
         } 
     }
 

@@ -24,7 +24,7 @@ function App() {
         .then(resp => resp.json())
         .then(data => setProblemsArr(data))
     }, [])
-    function handleSaveProblem(problemObj, setterObj) {
+    function handleSaveProblem(problemObj) {
         fetch("http://localhost:9292/problems", {
             method: "POST",
             headers: {
@@ -35,8 +35,8 @@ function App() {
         .then(r => r.json())
         .then(data => {
             console.log(data, problemsArr)
-            data.setter = setterObj
-            setProblemsArr([...problemsArr, data])
+            let newArr = [...problemsArr, data]
+            setProblemsArr(newArr)
         })
     }
 
@@ -72,6 +72,11 @@ function App() {
       setProblemsArr(newProblemsArr)
     }
 
+    function handleDeleteProblem(deleteObj) {
+      const newProblemsArr = problemsArr.filter(problem => problem.id != deleteObj.id)
+      setProblemsArr(newProblemsArr)
+    }
+
   return (
     <div className="App">
         <Header />
@@ -84,7 +89,11 @@ function App() {
             <Climbers climbersArr={climbersArr} saveClimb={saveClimb}/>
           </Route>
           <Route exact path="/problems" >
-            <Problems handleSaveProblem={handleSaveProblem} handleUpdateProblems={handleUpdateProblems}/>
+            <Problems 
+              saveProblem={handleSaveProblem} 
+              handleUpdateProblems={handleUpdateProblems} 
+              handleDeleteProblem={handleDeleteProblem}
+            />
           </Route>
         </ProblemContext.Provider>
         </Switch>

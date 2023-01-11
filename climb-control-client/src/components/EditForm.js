@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react"
 
-function EditForm({origDiff, origRemove, handleUpdate, handleCancel}) {
+function EditForm({origDiff, origRemove, handleUpdate, handleCancel, handleDelete}) {
 
     const dateInputRef = useRef(null)
 
@@ -13,11 +13,14 @@ function EditForm({origDiff, origRemove, handleUpdate, handleCancel}) {
     function handleOnDateChange(e) {
         setUpdatedRemove(e.target.value)
     }
-    function handleOnSaveClick(e) {
+    function handleOnSaveClick() {
         handleUpdate(updatedDiff, updatedRemove)
     }
     function handleCancelClick() {
         handleCancel()
+    }
+    function handleOnDeleteClick() {
+        handleDelete()
     }
 
     return (
@@ -43,6 +46,7 @@ function EditForm({origDiff, origRemove, handleUpdate, handleCancel}) {
                 </select>
                 <input type="date" onChange={handleOnDateChange} ref={dateInputRef} value={origRemove}/>
                 <button onClick={handleOnSaveClick}>Save these changes?</button>
+                <button onClick={handleOnDeleteClick}>Delete this problem</button>
                 <button onClick={handleCancelClick}>Cancel editing</button>
             </label>
         </div>

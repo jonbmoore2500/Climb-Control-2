@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
         climb_type: params[:climb_type],
         setter_id: params[:setter_id]
       )
-      new_problem.to_json
+      new_problem.to_json(include: :setter)
     end
 
     patch '/problems/:id' do
@@ -41,7 +41,7 @@ class ApplicationController < Sinatra::Base
     end
 
     delete '/problems/:id' do 
-      delete_program = Program.find(params[:id])
+      delete_program = Problem.find(params[:id])
       delete_program.destroy
       delete_program.to_json
     end

@@ -4,7 +4,7 @@ import ProblemForm from "./ProblemForm"
 import EditForm from "./EditForm"
 import {ProblemContext} from "../contexts/ProblemContext.js"
 
-function Problems({handleSaveProblem, handleUpdateProblems}) {
+function Problems({saveProblem, handleUpdateProblems, handleDeleteProblem}) {
     const {problemsArr} = useContext(ProblemContext)
     const remainingProblems = problemsArr.filter((problem) => problem.days_remaining > 0)
     
@@ -40,6 +40,23 @@ function Problems({handleSaveProblem, handleUpdateProblems}) {
         })
     }
 
+    function handleSaveProblem(problemObj) {
+        saveProblem(problemObj)
+    }
+
+    function handleDelete() {
+        console.log(editId)
+        fetch(`http://localhost:9292/problems/${editId}`, {
+            method: "DELETE",
+        })
+        .then(r => r.json())
+        .then((data) => {
+            console.log(data)
+            handleDeleteProblem(data)
+            setEditId(0)
+        })
+    }
+
     function handleCancel() {
         setEditId(0)
     }
@@ -47,7 +64,7 @@ function Problems({handleSaveProblem, handleUpdateProblems}) {
     return (
         <div>
             <h3>Problems!</h3>
-            <h4>Select a problem to edit its difficulty or removal date</h4>
+            <h4>Select a problem to edit or delete it</h4>
             {/* add a way to favorite (non-persistent) a given problem, then move 
             favorites to front of the line in ClimbForm. long term project */}
             <div>
@@ -61,10 +78,14 @@ function Problems({handleSaveProblem, handleUpdateProblems}) {
                 origRemove={editProblem.date_to_remove} 
                 handleUpdate={handleUpdate} 
                 handleCancel={handleCancel}
+                handleDelete={handleDelete}
                 /> :
             null
             }
-            <ProblemForm handleSave={handleSaveProblem} settersArr={settersArr}/>
+            <ProblemForm 
+            handleSave={handleSaveProblem} 
+            settersArr={settersArr}
+            />
         </div>
 
     )
