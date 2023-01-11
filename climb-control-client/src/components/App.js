@@ -36,6 +36,8 @@ function App() {
         .then(data => {
             console.log(data, problemsArr)
             let newArr = [...problemsArr, data]
+            console.log(newArr)
+            // why won't it rerender the updated array?
             setProblemsArr(newArr)
         })
     }
@@ -93,6 +95,7 @@ function App() {
               saveProblem={handleSaveProblem} 
               handleUpdateProblems={handleUpdateProblems} 
               handleDeleteProblem={handleDeleteProblem}
+              problemsArr={problemsArr}
             />
           </Route>
         </ProblemContext.Provider>

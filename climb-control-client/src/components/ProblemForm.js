@@ -32,13 +32,15 @@ function ProblemForm({handleSave, settersArr}) {
             setter_id: parseInt(newSetterId)
         }
         if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
+            e.preventDefault()
             handleSave(newObj) 
+
         } 
     }
 
     return (
         <div>
-            <label>
+            <form onSubmit={handleOnSaveClick}>
                 <h5>Enter a new problem</h5>
                 <select onChange={handleOnDiffChange} defaultValue={newDifficulty}>
                     <option value="9999">Select a Difficulty</option>
@@ -65,8 +67,8 @@ function ProblemForm({handleSave, settersArr}) {
                     ))}
                 </select>
                 <input type="date" onChange={handleOnDateChange} ref={dateInputRef} value={newDateRemove}/>
-                <button onClick={handleOnSaveClick}>Save this problem?</button>
-            </label>   
+                <button type="submit" >Save this problem?</button>
+            </form>   
         </div>
     )
 }

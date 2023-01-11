@@ -2,10 +2,10 @@ import React, {useState, useEffect, useContext} from "react"
 import ProblemCard from "./ProblemCard"
 import ProblemForm from "./ProblemForm"
 import EditForm from "./EditForm"
-import {ProblemContext} from "../contexts/ProblemContext.js"
+//import {ProblemContext} from "../contexts/ProblemContext.js"
 
-function Problems({saveProblem, handleUpdateProblems, handleDeleteProblem}) {
-    const {problemsArr} = useContext(ProblemContext)
+function Problems({problemsArr, saveProblem, handleUpdateProblems, handleDeleteProblem}) {
+    //const {problemsArr} = useContext(ProblemContext)
     const remainingProblems = problemsArr.filter((problem) => problem.days_remaining > 0)
     
     const [editId, setEditId] = useState(0)
