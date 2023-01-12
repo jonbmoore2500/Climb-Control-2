@@ -12,18 +12,20 @@ import {ProblemContext} from "../contexts/ProblemContext.js"
 function App() {
 
     const [climbersArr, setClimbersArr] = useState([])
+    const [problemsArr, setProblemsArr] = useState([])
+
     useEffect(() => {
         fetch("http://localhost:9292/climbers")
         .then(resp => resp.json())
         .then(data => setClimbersArr(data))
     }, [])
-
-    const [problemsArr, setProblemsArr] = useState([])
+    
     useEffect(() => {
         fetch("http://localhost:9292/problems")
         .then(resp => resp.json())
         .then(data => setProblemsArr(data))
     }, [])
+
     function handleSaveProblem(problemObj) {
         fetch("http://localhost:9292/problems", {
             method: "POST",
@@ -34,11 +36,7 @@ function App() {
         })
         .then(r => r.json())
         .then(data => {
-            console.log(data, problemsArr)
-            let newArr = [...problemsArr, data]
-            console.log(newArr)
-            // why won't it rerender from the updated array?
-            setProblemsArr(newArr)
+            setProblemsArr([...problemsArr, data])
         })
     }
 
@@ -70,7 +68,6 @@ function App() {
         }
         return problem
       })
-      console.log(problemsArr, newProblemsArr)
       setProblemsArr(newProblemsArr)
     }
 

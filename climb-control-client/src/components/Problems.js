@@ -2,13 +2,13 @@ import React, {useState, useEffect, useContext} from "react"
 import ProblemCard from "./ProblemCard"
 import ProblemForm from "./ProblemForm"
 import EditForm from "./EditForm"
-//import {ProblemContext} from "../contexts/ProblemContext.js"
+
 
 function Problems({problemsArr, saveProblem, handleUpdateProblems, handleDeleteProblem}) {
-    //const {problemsArr} = useContext(ProblemContext)
-    const remainingProblems = problemsArr.filter((problem) => problem.days_remaining > 0)
-    
+
     const [editId, setEditId] = useState(0)
+
+    const remainingProblems = problemsArr.filter((problem) => problem.days_remaining > 0)
     const editProblem = remainingProblems.find((problem) => problem.id == editId)
 
     const [settersArr, setSettersArr] = useState([])
@@ -69,7 +69,12 @@ function Problems({problemsArr, saveProblem, handleUpdateProblems, handleDeleteP
             favorites to front of the line in ClimbForm. long term project */}
             <div>
                 {remainingProblems.map((problem) => (
-                <ProblemCard problemObj={problem} key={problem.id} handleClick={handleClick} selected={editId == problem.id}/>
+                <ProblemCard 
+                problemObj={problem} 
+                key={problem.id} 
+                handleClick={handleClick} 
+                selected={editId == problem.id}
+                />
                 ))}
             </div>
             {editId > 0 ?

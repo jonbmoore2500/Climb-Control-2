@@ -3,7 +3,6 @@ import ClimbForm from "./ClimbForm"
 import "../modal.css"
 
 function ClimberCard({climber, handleSaveClimb}) {
-    console.log(climber)
 // create toggle for form to add climb. use Context for available problems
     const [modal, setModal] = useState(false)
     const [showForm, setShowForm] = useState(false)

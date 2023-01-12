@@ -23,6 +23,7 @@ function ProblemForm({handleSave, settersArr}) {
     }
 
     function handleOnSaveClick(e) {
+        // update to make clear submit vs click
         e.preventDefault()
         let newObj = {
             difficulty: parseInt(newDifficulty),
@@ -32,7 +33,6 @@ function ProblemForm({handleSave, settersArr}) {
             setter_id: parseInt(newSetterId)
         }
         if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
-            e.preventDefault()
             handleSave(newObj) 
 
         } 
