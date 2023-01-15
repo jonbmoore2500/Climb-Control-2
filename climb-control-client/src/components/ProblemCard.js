@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 
 function ProblemCard({problemObj, handleClick, selected}) {
-    
+    console.log(problemObj)
     function onClick() {
         handleClick(problemObj.id)
     }

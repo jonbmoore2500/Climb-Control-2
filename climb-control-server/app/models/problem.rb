@@ -10,4 +10,9 @@ class Problem < ActiveRecord::Base
         (self.date_to_remove - Date.today).to_i
     end
 
+    def number_climbers
+        unique_climbers = self.climbers.uniq 
+        unique_climbers.length()
+    end
+
 end
