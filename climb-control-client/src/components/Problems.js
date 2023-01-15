@@ -7,11 +7,11 @@ import EditForm from "./EditForm"
 function Problems({problemsArr, saveProblem, handleUpdateProblems, handleDeleteProblem}) {
 
     const [editId, setEditId] = useState(0)
-
+    const [settersArr, setSettersArr] = useState([])
+    
     const remainingProblems = problemsArr.filter((problem) => problem.days_remaining > 0)
     const editProblem = remainingProblems.find((problem) => problem.id == editId)
 
-    const [settersArr, setSettersArr] = useState([])
     useEffect(() => {
         fetch("http://localhost:9292/setters")
         .then(resp => resp.json())

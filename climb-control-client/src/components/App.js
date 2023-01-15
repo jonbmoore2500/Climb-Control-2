@@ -7,8 +7,6 @@ import Climbers from "./Climbers"
 import Problems from "./Problems"
 import {ProblemContext} from "../contexts/ProblemContext.js"
 
-
-
 function App() {
 
     const [climbersArr, setClimbersArr] = useState([])
@@ -97,7 +95,6 @@ function App() {
           </Route>
         </ProblemContext.Provider>
         </Switch>
-        
     </div>
   );
 }

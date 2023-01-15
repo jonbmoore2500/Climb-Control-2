@@ -2,22 +2,26 @@ import React, {useState, useRef} from "react"
 
 function ProblemForm({handleSave, settersArr}) {
     
+    const dateInputRef = useRef(null)
     let today = new Date().toISOString().slice(0, 10)
+    
     const [newDifficulty, setNewDifficulty] = useState("9999")
     const [newSetterId, setNewSetterId] = useState("placeholder")
     const [newDateRemove, setNewDateRemove] = useState(today)
     const [newClimbType, setNewClimbType] = useState("")
-    const dateInputRef = useRef(null)
     
     function handleOnDiffChange(e) {
         setNewDifficulty(e.target.value)
     }
+
     function handleOnTypeChange(e) {
         setNewClimbType(e.target.value)
     }
+    
     function handleOnSetterChange(e) {
         setNewSetterId(e.target.value)
     }
+    
     function handleOnDateChange(e) {
         setNewDateRemove(e.target.value)
     }

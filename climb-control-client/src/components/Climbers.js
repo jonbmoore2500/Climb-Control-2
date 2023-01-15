@@ -17,8 +17,6 @@ function Climbers({climbersArr, saveClimb}) {
             </ul>
         </div>
     ) 
-
-
 }
 
 export default Climbers

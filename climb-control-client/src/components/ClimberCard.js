@@ -10,6 +10,7 @@ function ClimberCard({climber, handleSaveClimb}) {
     function toggleModal() {
         setModal(!modal)
     }
+
     function toggleForm() {
         setShowForm(!showForm)
     }
@@ -18,6 +19,7 @@ function ClimberCard({climber, handleSaveClimb}) {
         let newClimbObj = {climber_id: parseInt(climber.id), problem_id: parseInt(problemId)}
         handleSaveClimb(newClimbObj)
     }
+
     function handleCancel(e) {
         setShowForm(!showForm)
     }
@@ -50,9 +52,6 @@ function ClimberCard({climber, handleSaveClimb}) {
             )}
         </div>
     )
-
 }
-
-
 
 export default ClimberCard
