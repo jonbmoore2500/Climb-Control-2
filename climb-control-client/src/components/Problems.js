@@ -45,13 +45,11 @@ function Problems({problemsArr, saveProblem, handleUpdateProblems, handleDeleteP
     }
 
     function handleDelete() {
-        console.log(editId)
         fetch(`http://localhost:9292/problems/${editId}`, {
             method: "DELETE",
         })
         .then(r => r.json())
         .then((data) => {
-            console.log(data)
             handleDeleteProblem(data)
             setEditId(0)
         })
@@ -92,12 +90,7 @@ function Problems({problemsArr, saveProblem, handleUpdateProblems, handleDeleteP
             settersArr={settersArr}
             />
         </div>
-
     )
-
-
 }
-
-
 
 export default Problems
