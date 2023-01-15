@@ -22,8 +22,7 @@ function ProblemForm({handleSave, settersArr}) {
         setNewDateRemove(e.target.value)
     }
 
-    function handleOnSaveClick(e) {
-        // update to make clear submit vs click
+    function handleOnSaveSubmit(e) {
         e.preventDefault()
         let newObj = {
             difficulty: parseInt(newDifficulty),
@@ -34,13 +33,12 @@ function ProblemForm({handleSave, settersArr}) {
         }
         if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
             handleSave(newObj) 
-
         } 
     }
 
     return (
         <div>
-            <form onSubmit={handleOnSaveClick}>
+            <form onSubmit={handleOnSaveSubmit}>
                 <h5>Enter a new problem</h5>
                 <select onChange={handleOnDiffChange} defaultValue={newDifficulty}>
                     <option value="9999">Select a Difficulty</option>

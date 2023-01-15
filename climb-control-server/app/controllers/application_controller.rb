@@ -16,7 +16,8 @@ class ApplicationController < Sinatra::Base
     # problems FULL CRUD
     get '/problems' do 
       all_problems = Problem.all
-      all_problems.to_json(:methods => [:days_remaining, :number_climbers], :include => :setter)
+      all_problems.to_json(:methods => [:days_remaining], :include => :setter)
+      #  , :number_climbers
     end
 
     post '/problems' do
@@ -27,7 +28,8 @@ class ApplicationController < Sinatra::Base
         climb_type: params[:climb_type],
         setter_id: params[:setter_id]
       )
-      new_problem.to_json(:methods => [:days_remaining, :number_climbers], :include => :setter)
+      new_problem.to_json(:methods => [:days_remaining], :include => :setter)
+      # , :number_climbers
     end
 
     patch '/problems/:id' do
@@ -52,6 +54,6 @@ class ApplicationController < Sinatra::Base
         climber_id: params[:climber_id],
         problem_id: params[:problem_id]
       )
-      new_climb.to_json(include: :climber)
+      new_climb.to_json(include: {climber: { :methods => [:hardest_climb, :average_difficulty, :favorite_setter], :include => :climbs } })
     end
   end

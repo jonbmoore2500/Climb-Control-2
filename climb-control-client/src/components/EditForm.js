@@ -13,7 +13,8 @@ function EditForm({origDiff, origRemove, handleUpdate, handleCancel, handleDelet
     function handleOnDateChange(e) {
         setUpdatedRemove(e.target.value)
     }
-    function handleOnSaveClick() {
+    function handleOnSaveClick(e) {
+        e.preventDefault()
         handleUpdate(updatedDiff, updatedRemove)
     }
     function handleCancelClick() {
@@ -25,7 +26,7 @@ function EditForm({origDiff, origRemove, handleUpdate, handleCancel, handleDelet
 
     return (
         <div>
-            <label>
+            <form onSubmit={handleOnSaveClick}>
                 <h5>Edit the selected problem</h5>
                 <select onChange={handleOnDiffChange} defaultValue={origDiff}>
                     <option value="9999">Select a Difficulty</option>
@@ -45,10 +46,10 @@ function EditForm({origDiff, origRemove, handleUpdate, handleCancel, handleDelet
                     <option value="13">V13</option>
                 </select>
                 <input type="date" onChange={handleOnDateChange} ref={dateInputRef} value={origRemove}/>
-                <button onClick={handleOnSaveClick}>Save these changes?</button>
+                <button type="submit">Save these changes?</button>
                 <button onClick={handleOnDeleteClick}>Delete this problem</button>
                 <button onClick={handleCancelClick}>Cancel editing</button>
-            </label>
+            </form>
         </div>
     )
 

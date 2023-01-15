@@ -9,6 +9,7 @@ function ClimbForm({climber, handleSubmit, handleCancel}) {
         setProblemForClimb(e.target.value)
     }
     function handleOnSubmit(e) {
+        e.preventDefault()
         if (problemForClimb != "placeholder") {
             handleSubmit(problemForClimb)
         }
@@ -19,8 +20,7 @@ function ClimbForm({climber, handleSubmit, handleCancel}) {
 
     return (
         <div>
-            {/* <h4>this is my climb form</h4> */}
-            <label>
+            <form onSubmit={handleOnSubmit}>
                 <h5>What problem did {climber.name} climb?</h5>
                 <select onChange={handleOnProblemChange} >
                     <option value={"placeholder"}>Choose a problem:</option>
@@ -28,12 +28,11 @@ function ClimbForm({climber, handleSubmit, handleCancel}) {
                         <option key={problem.id} value={problem.id}>V{problem.difficulty} &#40;{problem.climb_type}&#41; set by {problem.setter.name} on {problem.date_set}</option>
                     ))}
                 </select>
-                <button onClick={handleOnSubmit}>Submit?</button>
+                <button type="submit">Submit?</button>
                 <button onClick={handleOnCancel}>Cancel?</button>
-            </label>
+            </form>
         </div>
     )
-
 }
 
 export default ClimbForm
