@@ -25,7 +25,7 @@ function ClimbForm({climber, handleSubmit, handleCancel}) {
         <div>
             <form>
                 <h5>What problem did {climber.name} climb?</h5>
-                <select onChange={handleOnProblemChange} >
+                <select onChange={handleOnProblemChange}>
                     <option value={"placeholder"}>Choose a problem:</option>
                     {problemsArr.map((problem) => (
                         <option key={problem.id} value={problem.id}>V{problem.difficulty} &#40;{problem.climb_type}&#41; set by {problem.setter.name} on {problem.date_set}</option>

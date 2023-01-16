@@ -6,6 +6,7 @@ import Home from "./Home"
 import Climbers from "./Climbers"
 import Problems from "./Problems"
 import {ProblemContext} from "../contexts/ProblemContext.js"
+import '../App.css';
 
 function App() {
 

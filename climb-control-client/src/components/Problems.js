@@ -61,7 +61,7 @@ function Problems({problemsArr, saveProblem, handleUpdateProblems, handleDeleteP
 
     return (
         <div>
-            <h3>Problems!</h3>
+            <h2>Problems!</h2>
             <h4>Select a problem to edit or delete it</h4>
             {/* add a way to favorite (non-persistent) a given problem, then move 
             favorites to front of the line in ClimbForm. long term project */}

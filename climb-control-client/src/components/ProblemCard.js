@@ -7,9 +7,11 @@ function ProblemCard({problemObj, handleClick, selected}) {
     }
 
     return (
-        <div onClick={onClick} className={`problem-${selected ? "active" : ""}`}>
-            V{problemObj.difficulty} set by {problemObj.setter.name}
-            . It was set on {problemObj.date_set} and has {problemObj.days_remaining} days left!
+        <div className="cards">
+            <div onClick={onClick} className={`problem-${selected ? "active" : ""}`} >
+                V{problemObj.difficulty} set by {problemObj.setter.name}
+                . It was set on {problemObj.date_set} and has {problemObj.days_remaining} days left!
+            </div>
         </div>
     )
 }
