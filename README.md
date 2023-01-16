@@ -59,6 +59,8 @@ ProblemForm
 
 #### Component Flow
 
+(formats correctly in VSCode, version formatted for GitHub in future update)
+
 └── App
     ├── Header
     |   └── NavBar
