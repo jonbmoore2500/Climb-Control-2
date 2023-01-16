@@ -40,12 +40,15 @@ function ClimberCard({climber, handleSaveClimb}) {
                         {climber.gym_member ? 
                             <h4>Member of the gym!</h4> : 
                             <h4>Not a member of the gym ☹</h4>}
-                        <h4>Hardest climb: V{climber.hardest_climb.difficulty} set on {climber.hardest_climb.date_set}</h4>
-                        <h4>Average difficulty climbed: V{climber.average_difficulty}</h4>
-                        <h4>Favorite setter: {climber.favorite_setter}</h4>
                         {showForm ? 
                         <ClimbForm climber={climber} handleSubmit={handleSubmit} handleCancel={handleCancel}/>
-                        : <button onClick={toggleForm}>Add a climb?</button>
+                        : 
+                        <>
+                            <h4>Hardest climb: V{climber.hardest_climb.difficulty} set on {climber.hardest_climb.date_set}</h4>
+                            <h4>Average difficulty climbed: V{climber.average_difficulty}</h4>
+                            <h4>Favorite setter: {climber.favorite_setter}</h4>
+                            <button onClick={toggleForm}>Add a climb?</button>
+                        </>
                         }
                         <button onClick={toggleModal}>Close</button>
                     </div>    

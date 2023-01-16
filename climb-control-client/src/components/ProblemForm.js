@@ -5,8 +5,8 @@ function ProblemForm({handleSave, settersArr}) {
     const dateInputRef = useRef(null)
     let today = new Date().toISOString().slice(0, 10)
     
-    const [newDifficulty, setNewDifficulty] = useState("9999")
-    const [newSetterId, setNewSetterId] = useState("placeholder")
+    const [newDifficulty, setNewDifficulty] = useState("")
+    const [newSetterId, setNewSetterId] = useState("")
     const [newDateRemove, setNewDateRemove] = useState(today)
     const [newClimbType, setNewClimbType] = useState("")
     
@@ -35,8 +35,12 @@ function ProblemForm({handleSave, settersArr}) {
             climb_type: newClimbType,
             setter_id: parseInt(newSetterId)
         }
-        if (newDifficulty.length < 3 && newSetterId != "placeholder" && newDateRemove > today && newClimbType.length > 0) {
+        if (newDifficulty.length > 0 && newSetterId != "" && newDateRemove > today && newClimbType.length > 0) {
             handleSave(newObj) 
+            setNewDifficulty("")
+            setNewClimbType("")
+            setNewSetterId("")
+            setNewDateRemove(today)
         } 
     }
 
@@ -44,8 +48,8 @@ function ProblemForm({handleSave, settersArr}) {
         <div>
             <form onSubmit={handleOnSaveSubmit}>
                 <h5>Enter a new problem</h5>
-                <select onChange={handleOnDiffChange} defaultValue={newDifficulty}>
-                    <option value="9999">Select a Difficulty</option>
+                <select onChange={handleOnDiffChange} value={newDifficulty}>
+                    <option>Select a Difficulty</option>
                     <option value="0">V0</option>
                     <option value="1">V1</option>
                     <option value="2">V2</option>
@@ -62,8 +66,8 @@ function ProblemForm({handleSave, settersArr}) {
                     <option value="13">V13</option>
                 </select>
                 <input className="newType" onChange={handleOnTypeChange} value={newClimbType} placeholder={"Enter a climb type"} />
-                <select onChange={handleOnSetterChange} >
-                    <option value={newSetterId}>Select a Setter</option>
+                <select onChange={handleOnSetterChange} value={newSetterId}>
+                    <option >Select a Setter</option>
                     {settersArr.map((setter) => (
                         <option value={setter.id} key={setter.id}>{setter.name}</option>
                     ))}
