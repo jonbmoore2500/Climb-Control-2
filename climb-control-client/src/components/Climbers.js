@@ -10,11 +10,9 @@ function Climbers({climbersArr, saveClimb}) {
     return (
         <div>
             <h2>Climbers!</h2>
-            {/* <ul> */}
                 {climbersArr.map((climber) => (
                     <ClimberCard climber={climber} key={climber.name} handleSaveClimb={handleSaveClimb}/>
                 ))}
-            {/* </ul> */}
         </div>
     ) 
 }

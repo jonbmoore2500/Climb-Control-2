@@ -91,7 +91,6 @@ function App() {
               saveProblem={handleSaveProblem} 
               handleUpdateProblems={handleUpdateProblems} 
               handleDeleteProblem={handleDeleteProblem}
-              problemsArr={problemsArr}
             />
           </Route>
         </ProblemContext.Provider>
