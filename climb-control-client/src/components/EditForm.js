@@ -17,7 +17,6 @@ function EditForm({origDiff, origRemove, handleUpdate, handleCancel, handleDelet
     
     function handleOnSaveClick(e) {
         e.preventDefault()
-        console.log(e)
         handleUpdate(updatedDiff, updatedRemove)
     }
     

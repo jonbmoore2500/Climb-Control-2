@@ -9,12 +9,12 @@ function Climbers({climbersArr, saveClimb}) {
 
     return (
         <div>
-            <h3>Climbers!</h3>
-            <ul>
+            <h2>Climbers!</h2>
+            {/* <ul> */}
                 {climbersArr.map((climber) => (
                     <ClimberCard climber={climber} key={climber.name} handleSaveClimb={handleSaveClimb}/>
                 ))}
-            </ul>
+            {/* </ul> */}
         </div>
     ) 
 }

@@ -4,7 +4,7 @@ import {ProblemContext} from "../contexts/ProblemContext.js"
 function ClimbForm({climber, handleSubmit, handleCancel}) {
 
     const {problemsArr} = useContext(ProblemContext)
-    const [problemForClimb, setProblemForClimb] = useState(0)
+    const [problemForClimb, setProblemForClimb] = useState("placeholder")
 
     function handleOnProblemChange(e) {
         setProblemForClimb(e.target.value)
@@ -17,7 +17,7 @@ function ClimbForm({climber, handleSubmit, handleCancel}) {
         }
     }
 
-    function handleOnCancel(e) {
+    function handleOnCancel() {
         handleCancel()
     }
 

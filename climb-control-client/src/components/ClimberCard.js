@@ -18,6 +18,7 @@ function ClimberCard({climber, handleSaveClimb}) {
     function handleSubmit(problemId) {
         let newClimbObj = {climber_id: parseInt(climber.id), problem_id: parseInt(problemId)}
         handleSaveClimb(newClimbObj)
+        setShowForm(!showForm)
     }
 
     function handleCancel(e) {
