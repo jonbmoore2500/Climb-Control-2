@@ -13,6 +13,12 @@ h1 {
 #headerDiv {
     color: darkslategray
 }
+
+#homeDiv {
+    width:50%;
+    margin-left: auto;
+    margin-right: auto
+}
   
 .nav{
     display:inline-block;
