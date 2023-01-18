@@ -3,6 +3,7 @@ import ClimberCard from "./ClimberCard"
 
 function Climbers({climbersArr, saveClimb}) {
     
+
     function handleSaveClimb(obj) {
         saveClimb(obj)
     }

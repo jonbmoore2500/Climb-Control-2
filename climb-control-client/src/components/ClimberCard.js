@@ -3,9 +3,10 @@ import ClimbForm from "./ClimbForm"
 import "../modal.css"
 
 function ClimberCard({climber, handleSaveClimb}) {
-
+    
     const [modal, setModal] = useState(false)
     const [showForm, setShowForm] = useState(false)
+    const [showClimbs, setShowClimbs] = useState(false)
 
     function toggleModal() {
         setModal(!modal)
@@ -21,8 +22,12 @@ function ClimberCard({climber, handleSaveClimb}) {
         setShowForm(!showForm)
     }
 
-    function handleCancel(e) {
+    function handleCancel() {
         setShowForm(!showForm)
+    }
+
+    function toggleShowClimbs() {
+        setShowClimbs(!showClimbs)
     }
 
     return (
@@ -44,9 +49,18 @@ function ClimberCard({climber, handleSaveClimb}) {
                         <ClimbForm climber={climber} handleSubmit={handleSubmit} handleCancel={handleCancel}/>
                         : 
                         <>
-                            <h4>Hardest climb: V{climber.hardest_climb.difficulty} set on {climber.hardest_climb.date_set}</h4>
-                            <h4>Average difficulty climbed: V{climber.average_difficulty}</h4>
-                            <h4>Favorite setter: {climber.favorite_setter}</h4>
+                            {climber.climbs.length > 0 ? 
+                                <>
+                                    <h4>Hardest climb: V{climber.hardest_climb.difficulty} set on {climber.hardest_climb.date_set}</h4>
+                                    <h4>Average difficulty climbed: V{climber.average_difficulty}</h4>
+                                    <h4>Favorite setter: {climber.favorite_setter}</h4>
+                                </> : 
+                                <>
+                                    <h4>No Climbs data yet:</h4>
+                                    <h5>add a climb to see Hardest Climb, Average Difficulty, and Favorite Setter</h5>
+                                </>
+                            }
+                            <button onClick={toggleShowClimbs}>Show climbs?</button>
                             <button onClick={toggleForm}>Add a climb?</button>
                         </>
                         }
