@@ -1,13 +1,13 @@
 # Climb Control ReadMe
 
 
-## Description
+### Description
 
 This is the Climb Control app, fulfilling the requirements of my Phase 3 project at Flatiron.
 
 It incorporates a React frontend and a Ruby/Sinatra backend to create a climbing gym organizer, maintaining tables for Setters, Problems, Climbs, and Climbers and displaying data from those tables and their relationships. 
 
-### Client
+## Client
 
 Climb Control utilizes a React client, incorporating Client-Side Routing to separate Climber and Route displays.
 
@@ -84,7 +84,7 @@ ProblemForm
 
 ProblemContext.js provides ProblemsArr to the Problems and Climbers component trees. Problems uses it to populate ProblemCards while Climbers uses it in the ClimbForm to populate the dropdown menu of Problems to match with the Climber in the Climbs table. ProblemsArr is populated via the initial GET process in the App component. 
 
-### Server
+## Server
 
 Climb Control utilizes a Ruby/Sinatra server, incorporating Active Record to build the tables and provide seed data. 
 
@@ -92,7 +92,7 @@ The seed data may have to be refreshed every so often to make sure that at least
 
 ##### To Run:
 
-Run "bundle install" to install all gems, "bundle exec rake migrate" to activate migration of tables, and "bundle exec rake seed" to seed those tables (seed data is currently up to date, see above). Then run "bundle exec rake server" to run the server, and view the server data on its own via [http://localhost:9292/*route_name*] (available routes are climbers, problems, climbs, and setters).
+Run "bundle install" to install all gems, "bundle exec rake db:create" to create the new database, "bundle exec rake db:migrate" to activate the migration of the tables into the database, and "bundle exec rake db:seed" to seed those tables (seed data is currently up to date, see above). Then run "bundle exec rake server" to run the server, and view the server data on its own via [http://localhost:9292/*route_name*] (available routes are climbers, problems, climbs, and setters).
 
 #### Table Organization
 
@@ -165,3 +165,4 @@ Potential future features:
  - Add date field to Climbs, only calculate average difficulty for a Climber within certain time frame (ie. easy climb from first day 2 years ago shouldn't influence current average difficulty). 
  - Add Setters client side route, display additional info and create editable fields.
  - Update Client with more recent version of react-router-dom, adjust routing syntax to reflect updates and take advantage of expanded features.
+ - Refactor Setters and Climbers into single table, expand options for data tracked. 
