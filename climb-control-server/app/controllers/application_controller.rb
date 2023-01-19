@@ -58,9 +58,15 @@ class ApplicationController < Sinatra::Base
     post '/climbs' do 
       new_climb = Climb.create(
         climber_id: params[:climber_id],
-        problem_id: params[:problem_id]
+        problem_id: params[:problem_id],
+        date_climbed: params[:date_climbed]
       )
-      new_climb.to_json(include: {climber: { :methods => [:hardest_climb, :average_difficulty, :favorite_setter], include: :climbs } })
+      new_climb.to_json(include: {climber: { :methods => [:hardest_climb, :average_difficulty, :favorite_setter], 
+      include: {climbs: {only: [:id, :date_climbed], 
+      include: 
+      {problem: {only: [:difficulty, :climb_type], 
+        include: 
+        {setter: {only: [:name]}}}}}} }})
     end
 
     # just for backend review

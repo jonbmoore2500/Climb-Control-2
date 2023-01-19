@@ -9,6 +9,8 @@ function ClimberCard({climber, handleSaveClimb}) {
     const [showForm, setShowForm] = useState(false)
     const [showClimbs, setShowClimbs] = useState(false)
 
+    let today = new Date().toISOString().slice(0, 10)
+
     function toggleModal() {
         setModal(!modal)
         setShowForm(false)
@@ -19,7 +21,7 @@ function ClimberCard({climber, handleSaveClimb}) {
     }
 
     function handleSubmit(problemId) {
-        let newClimbObj = {climber_id: parseInt(climber.id), problem_id: parseInt(problemId)}
+        let newClimbObj = {climber_id: parseInt(climber.id), problem_id: parseInt(problemId), date_climbed: today}
         handleSaveClimb(newClimbObj)
         setShowForm(!showForm)
     }
