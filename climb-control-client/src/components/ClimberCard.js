@@ -1,15 +1,17 @@
 import React, {useState} from 'react'
 import ClimbForm from "./ClimbForm"
+import ClimbsList from "./ClimbsList"
 import "../modal.css"
 
 function ClimberCard({climber, handleSaveClimb}) {
-    
+
     const [modal, setModal] = useState(false)
     const [showForm, setShowForm] = useState(false)
     const [showClimbs, setShowClimbs] = useState(false)
 
     function toggleModal() {
         setModal(!modal)
+        setShowForm(false)
     }
 
     function toggleForm() {
@@ -23,7 +25,8 @@ function ClimberCard({climber, handleSaveClimb}) {
     }
 
     function handleCancel() {
-        setShowForm(!showForm)
+        setShowForm(false)
+        setShowClimbs(false)
     }
 
     function toggleShowClimbs() {
@@ -45,8 +48,10 @@ function ClimberCard({climber, handleSaveClimb}) {
                         {climber.gym_member ? 
                             <h4>Member of the gym!</h4> : 
                             <h4>Not a member of the gym ☹</h4>}
-                        {showForm ? 
-                        <ClimbForm climber={climber} handleSubmit={handleSubmit} handleCancel={handleCancel}/>
+                        {showForm || showClimbs ? (
+                            showForm ? 
+                            <ClimbForm climber={climber} handleSubmit={handleSubmit} handleCancel={handleCancel}/> :
+                            <ClimbsList climbs={climber.climbs} handleClose={handleCancel} />)
                         : 
                         <>
                             {climber.climbs.length > 0 ? 

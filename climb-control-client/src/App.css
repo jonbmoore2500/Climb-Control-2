@@ -44,3 +44,7 @@ h1 {
     color:darkgreen;
     border: 3px solid darkgreen;
 }
+
+.climbsList {
+    text-align: left;
+}
