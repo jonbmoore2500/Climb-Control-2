@@ -36,10 +36,13 @@ Climbers
 
 ClimberCard
  - on click, displays information about a given Climber in a modal 
- - contains ClimbForm
+ - contains ClimbForm, ClimbsList
 
 ClimbForm
- - with a dropdown of Problems, lets a Climber be paired with a Problem in a Climb
+ - with a dropdown of Problems, lets a Climber be paired with a Problem in a Climb. This Climb can be saved
+
+ClimbsList
+ - provides a list of all Climbs the Climber has logged, with data from the corresponding Problem and that Problem's Setter
 
 Problems
  - displays all ProblemCards
@@ -69,10 +72,12 @@ ProblemForm
     |
     ├── Climbers
     |   ├── ClimberCard
-    |   |    └── ClimbForm
+    |   |    ├── ClimbForm
+    |   |    └── ClimbsList
     |   └── ClimberCard (for each available Climber)
-    |        └── ClimbForm
-    |
+    |        ├── ClimbForm
+    |        └── ClimbsList
+    |    
     └── Problems
         ├── ProblemCard
         ├── ProblemCard (for each available Problem)
@@ -139,6 +144,7 @@ Belongs to Problem
 integer - id
 integer - climber_id
 integer - problem_id
+date - date_climbed
 
 ##### Setters
 

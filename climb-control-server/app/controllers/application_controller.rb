@@ -66,13 +66,13 @@ class ApplicationController < Sinatra::Base
       include: 
       {problem: {only: [:difficulty, :climb_type], 
         include: 
-        {setter: {only: [:name]}}}}}} }})
+        {setter: {only: [:name]}}}}}}}})
     end
 
     # just for backend review
-    get '/climbs' do 
-      climbs = Climb.all
-      climbs.to_json(include: :problem)
-    end
+    # get '/climbs' do 
+    #   climbs = Climb.all
+    #   climbs.to_json(include: :problem)
+    # end
 
   end
