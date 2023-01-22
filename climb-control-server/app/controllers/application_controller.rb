@@ -11,13 +11,10 @@ class ApplicationController < Sinatra::Base
     get '/climbers' do 
       climbers = Climber.all
       climbers.to_json(
-        methods: [:hardest_climb, :average_difficulty, :favorite_setter], 
-        include: 
-        {climbs: {only: [:id, :date_climbed], 
-          include: 
-          {problem: {only: [:difficulty, :climb_type], 
-            include: 
-            {setter: {only: [:name]}}}}}}
+        methods: [:hardest_climb, :average_difficulty, :favorite_setter], include: {
+          climbs: {only: [:id, :date_climbed], include: {
+            problem: {only: [:difficulty, :climb_type], include: {
+              setter: {only: [:name]}}}}}}
         )
     end
 
@@ -61,12 +58,12 @@ class ApplicationController < Sinatra::Base
         problem_id: params[:problem_id],
         date_climbed: params[:date_climbed]
       )
-      new_climb.to_json(include: {climber: { :methods => [:hardest_climb, :average_difficulty, :favorite_setter], 
-      include: {climbs: {only: [:id, :date_climbed], 
-      include: 
-      {problem: {only: [:difficulty, :climb_type], 
-        include: 
-        {setter: {only: [:name]}}}}}}}})
+      new_climb.to_json(include: {
+        climber: { :methods => [:hardest_climb, :average_difficulty, :favorite_setter], include: {
+          climbs: {only: [:id, :date_climbed], include: {
+            problem: {only: [:difficulty, :climb_type], include: {
+              setter: {only: [:name]}}}}}}}})
+
     end
 
     # just for backend review
@@ -75,4 +72,4 @@ class ApplicationController < Sinatra::Base
     #   climbs.to_json(include: :problem)
     # end
 
-  end
+end

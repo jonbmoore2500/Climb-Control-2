@@ -23,7 +23,7 @@ function App() {
         fetch("http://localhost:9292/problems")
         .then(resp => resp.json())
         .then(data => setProblemsArr(data))
-    }, [])
+    }, [climbersArr])
 
     function handleSaveProblem(problemObj) {
         fetch("http://localhost:9292/problems", {

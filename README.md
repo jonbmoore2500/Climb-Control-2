@@ -168,7 +168,7 @@ Potential future features:
  - Expand server to allow for multiple gyms and expand client to display this new info. Problems will be gym-specific, Setters can work at 0, 1, or several gyms, Climbers can be a member at 0, 1, or several gyms, etc.
  - Create ability to favorite certain Problems and prioritize their display in the dropdown menu in ClimbForm.
  - Make more fields editable without cluttering screen. For example - age of climber, gym membership of climber, type of climb.
- - Add date field to Climbs, only calculate average difficulty for a Climber within certain time frame (ie. easy climb from first day 2 years ago shouldn't influence current average difficulty). 
+ - Oonly calculate average difficulty for a Climber within certain time frame (ie. easy climb from first day 2 years ago shouldn't influence current average difficulty). 
  - Add Setters client side route, display additional info and create editable fields.
  - Update Client with more recent version of react-router-dom, adjust routing syntax to reflect updates and take advantage of expanded features.
  - Refactor Setters and Climbers into single table, expand options for data tracked. 
