@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
         difficulty: params[:difficulty],
         date_to_remove: params[:date_to_remove]
       )
-      edited_problem.to_json(methods: :days_remaining, include: :setter)
+      edited_problem.to_json(methods: [:days_remaining, :number_climbers], include: :setter)
     end
 
     delete '/problems/:id' do 

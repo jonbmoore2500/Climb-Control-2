@@ -64,6 +64,7 @@ function App() {
       const newProblemsArr = problemsArr.map((problem) => {
         if (problem.id == problemObj.id) {
           problem = problemObj
+          return problem
         }
         return problem
       })
