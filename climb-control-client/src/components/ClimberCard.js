@@ -14,6 +14,7 @@ function ClimberCard({climber, handleSaveClimb}) {
     function toggleModal() {
         setModal(!modal)
         setShowForm(false)
+        setShowClimbs(false)
     }
 
     function toggleForm() {

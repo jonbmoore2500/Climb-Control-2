@@ -73,7 +73,13 @@ function App() {
 
     function handleDeleteProblem(deleteObj) {
       const newProblemsArr = problemsArr.filter(problem => problem.id != deleteObj.id)
-      setProblemsArr(newProblemsArr)
+      fetch("http://localhost:9292/climbers")
+        .then(resp => resp.json())
+        .then(data => {
+          setClimbersArr(data)
+          setProblemsArr(newProblemsArr)
+        })
+      
     }
 
   return (
