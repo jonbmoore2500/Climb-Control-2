@@ -52,8 +52,6 @@ class ApplicationController < Sinatra::Base
       end
       delete_problem.destroy
       return delete_problem.to_json(include: :climbers)
-
-      
     end
 
     # climbs POST only
@@ -72,9 +70,9 @@ class ApplicationController < Sinatra::Base
     end
 
     # just for backend review
-    get '/climbs' do 
-      climbs = Climb.all
-      climbs.to_json(include: :problem)
-    end
+    # get '/climbs' do 
+    #   climbs = Climb.all
+    #   climbs.to_json(include: :problem)
+    # end
 
 end

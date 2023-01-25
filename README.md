@@ -39,7 +39,7 @@ ClimberCard
  - contains ClimbForm, ClimbsList
 
 ClimbForm
- - with a dropdown of Problems, lets a Climber be paired with a Problem in a Climb. This Climb can be saved
+ - with a dropdown of Problems, lets a Climber be paired with a Problem in a Climb through a POST request. Data related to this POST is reflected in the ProblemCard for that Problem
 
 ClimbsList
  - provides a list of all Climbs the Climber has logged, with data from the corresponding Problem and that Problem's Setter
@@ -54,11 +54,11 @@ ProblemCard
  - allows the selection of a Problem to open EditForm in Problems
 
 EditForm
- - allows the user to edit certain information fields of a selected ProblemCard
- - allows the uer to delete a selected ProblemCard
+ - allows the user to edit certain information fields of a selected ProblemCard, saved via a PATCH request
+ - allows the uer to delete a selected ProblemCard. The Problem and all of its Climbs are removed from the backend via a DELETE request - a new GET request for Climbers data follows to refresh the Climbers route and reflect the removal of the Problem and its Climbs
  
 ProblemForm
- - allows the user to create a new Problem
+ - allows the user to create a new Problem, saved via a POST request
 
 #### Component Flow
 
@@ -160,7 +160,7 @@ Setters and Climbers are GET only, the current form of this app has no way to PO
 
 Climbs is POST only, although Climb data is included in the Climber GET request.
 
-Problems has full CRUD capabilities. Only a few fields can currently be changed via PATCH, but that can be expanded in the future. All existing Problems are displayed in the Problems route via GET. Controlled forms allow the user to POST a new Problem or PATCH an existing one, and a button allows the user to DELETE an existing one.
+Problems has full CRUD capabilities. Only a few fields can currently be changed via PATCH, but that can be expanded in the future. All existing Problems are displayed in the Problems route via GET. Controlled forms allow the user to POST a new Problem or PATCH an existing one, and a button allows the user to DELETE an existing one. The DELETE request also DELETEs all Climbs referencing that Problem to avoid rendering errors in Climbers tab.
 
 ## Roadmap
 
